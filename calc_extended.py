@@ -9,4 +9,9 @@ elif(Category == 3):
     Patterns = ["ByteCalculator"]
 else:
     print("Type correct number")
-print("Select one of those: \n 1 - {}\n 2 - {}\n 3 - {}\n 4 - {}\n 5 - {}\n 6 - {}\n 7 - {}\n 8 - {}\n 9 - {}\n10 - {}\n11 - {}\n12 - {}\n13 - {}\n14 - {}\n15 - {}\n16 - {}\n17 - {}\n18 - {}\n19 - {}\n20 - {}\n21 - {}".format(Patterns[0],Patterns[1],Patterns[2],Patterns[3],Patterns[4],Patterns[5],Patterns[6],Patterns[7],Patterns[8],Patterns[9],Patterns[10],Patterns[11],Patterns[12],Patterns[13],Patterns[14],Patterns[15],Patterns[16],Patterns[17],Patterns[18],Patterns[19],Patterns[20]))
+if(Category == 1):
+    DirectPattern = int(input("Select one of those: \n 1 - {}\n 2 - {}\n 3 - {}\n 4 - {}\n 5 - {}\n 6 - {}\n 7 - {}\n 8 - {}\n 9 - {}\n10 - {}\n11 - {}\n12 - {}\n13 - {}\n14 - {}\n15 - {}\n16 - {}\n17 - {}\n18 - {}\n19 - {}\n20 - {}\n21 - {}\n".format(Patterns[0],Patterns[1],Patterns[2],Patterns[3],Patterns[4],Patterns[5],Patterns[6],Patterns[7],Patterns[8],Patterns[9],Patterns[10],Patterns[11],Patterns[12],Patterns[13],Patterns[14],Patterns[15],Patterns[16],Patterns[17],Patterns[18],Patterns[19],Patterns[20])))
+elif(Category == 2):
+    DirectPattern = int(input("Select one of those: \n1 - {}\n2 - {}\n3 - {}\n".format(Patterns[0],Patterns[1],Patterns[2])))
+elif(Category == 3):
+    DirectPattern = int(input("Select one of those: \n1 - {}\n".format(Patterns[0])))
