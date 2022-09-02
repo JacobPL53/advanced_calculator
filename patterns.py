@@ -1,8 +1,7 @@
-from math import sqrt
-from math import pi
+from math import sqrt, pi, prod
 from random import choice
 
-possib = (  
+POSSIBS = (  
     'equals',
     'is',
     'matches',
@@ -14,7 +13,7 @@ possib = (
     'fits'
 )
 
-patts = (
+PATTS = (
     (   'Addition',
         'Subtraction',
         'Multiplication',
@@ -57,39 +56,61 @@ patts = (
         'Converting numbers to other number system'
     )
 )
-def mult(*args) -> int:
-    res = 1
-    for num in args:
-        res *= num
-    return res
 
 def unavai() -> None:
+    """
+        Used when function is in construction phase.
+    """
     print('This isn\'t currently available, but may be in the future...')
 
-def rnd_eq_syn() -> object:
-    return choice(possib)
+def rnd_eq_syn() -> str:
+    """
+        Choices random synonym of word 'equal'.
+        @returns: random string from POSSIBS.
+    """
+    return choice(POSSIBS)
 
-def addition() -> None:
+def num_not_found(var) -> None:
+    """
+        Prints message saying that number isn't valid.
+        @param: variable which contains the invalid number.
+    """
+    print(f'Provided number "{var}" doesn\'t match any of the proper numbers.')
+
+def add() -> None:
+    """
+        Computes and prints sum of provided ingredients.
+    """
     ingredients = (
         int(input('Type first ingredient: ')),
         int(input('Type second ingredient: '))
     )
     print('Sum of those numbers', rnd_eq_syn(), sum(ingredients))
 
-def subtraction() -> None:
+def sub() -> None:
+    """
+        Computes and prints difference of provided numbers.
+    """
     minuend = int(input('Type minuend: '))
     subtrahend = int(input('Type subtrahend'))
     difference = minuend - subtrahend
     print('Difference of those numbers', rnd_eq_syn(), difference)
 
-def multiplication() -> None:
+def mult() -> None:
+    """
+        Computes and prints product of provided factors.
+    """
     factors = (
         int(input('Type first factor: ')),
         int(input('Type second factor: '))
     )
-    print('Product of those numbers', rnd_eq_syn(), factors(0) * factors(1))
+    print('Product of those numbers', rnd_eq_syn(), prod(factors))
 
-def division() -> None:
+def div() -> None:
+    """
+        Computes division of provided numbers. If remainder isn't equal 0, prints quotient and remainder.
+        If it is, prints only quotient.
+    """
     dividend = int(input('Type dividend: '))
     divisor = int(input('Type divisor: '))
     quotient = dividend / divisor
@@ -100,32 +121,40 @@ def division() -> None:
     else:
         print('Quotient of those numbers', rnd_eq_syn(), quotient)
 
-def power() -> None:
+def pow() -> None:
+    """
+        Computes and prints power with provided base and exponent.
+    """
     base = int(input('Type base: '))
     exponent = int(input('Type exponent: '))
     power = base ** exponent
     print('Power of those number', rnd_eq_syn(), power)
 
 def root() -> None:
-    type_of_root = input('Square or cube root? (s/c)')
-    if(type_of_root.lower() == 's'):
-        radicand = int(input('Type radicand: '))
-        result = sqrt(radicand)
-    elif(type_of_root.lower() == 'c'):
-        radicand - int(input('Type radicand: '))
-        result = radicand ** (1/3)
+    """
+        Computes and prints root with provided radicand and index.
+    """
+    of_what_index = input('Root of what index: ')
+    radicand = int(input('Type radicand: '))
+    result = radicand ** (1/of_what_index)
     print('Result of your root', rnd_eq_syn(), result)
 
-def modulo() -> None:
+def mod() -> None:
+    """
+        Computes and prints remainder (modulo) of provided numbers.
+    """
     dividend = int(input('Type dividend: '))
     divisor = int(input('Type divisor: '))
     remainder = dividend % divisor
     print('Modulo of those numbers', rnd_eq_syn(), remainder)
 
-def factorial() -> int:
+def fact() -> int:
+    """
+        Computes and prints factorial of provided number.
+        @returns: 0 if provided number is negative.
+    """
     try:
-        text = input('Factorial of what number: ')
-        num = int(text)
+        of_what_num = int(input('Factorial of what number: '))
     except ValueError:
         print('Number provided by user is not an integer.')
         return 0
@@ -141,50 +170,71 @@ def factorial() -> int:
         print('Result of your factorial', rnd_eq_syn(), num)
 
 def sqre_diag() -> None:
+    """
+        Computes and prints diagonal of square with provided length of side.
+    """
     sd_len = int(input('Type side length of your square: '))
     diagonal = sd_len * sqrt(2)
-    print('Diagonal of your square {} {}√2 ({})'.format(rnd_eq_syn(), sd_len, diagonal))
+    print(f'Diagonal of your square {rnd_eq_syn()} {sd_len}√2 ({diagonal})')
 
 def sqre_area() -> None:
+    """
+        Computes and prints area of square with provided length of side.
+    """
     sd_len = int(input('Type side lenght of your square: '))
     square_area = sd_len ** 2
     print('Area of your square', rnd_eq_syn(), square_area)
 
 def sqre_peri() -> None:
+    """
+        Computes and prints perimeter of square with provided length of side.
+    """
     sd_len = int(input('Type side length of your square: '))
     square_peri = sd_len * 4
     print('Perimeter of your square', rnd_eq_syn(), square_peri)
 
 def rect_area() -> None:
+    """
+        Computes and prints area of rectangle with provided width and height.
+    """
     rect_width = int(input('Type width of your rectangle: '))
     rect_height = int(input('Type height of your rectangle: '))
     rect_area = rect_height * rect_width
     print('Area of your rectangle', rnd_eq_syn(), rect_area)
 
 def rect_peri() -> None:
+    """
+        Computes and prints perimeter of rectangle with provided width and height.
+    """
     rect_width = int(input('Type width of your rectangle: '))
     rect_height = int(input('Type height of your rectangle: '))
     rect_peri = 2 * rect_width + 2 * rect_height
     print('Perimeter of your rectangle', (rnd_eq_syn(), rect_peri))
 
 def tria_area() -> None:
+    """
+        Computes and prints area of triangle with provided side length and height.
+    """
     sd_len = int(input('Type side length of your triangle: '))
     height = int(input('Type height of your triangle: '))
     tri_area = sd_len * height / 2
     print('Area of your triangle', (rnd_eq_syn(), tri_area))
 
 def tria_peri() -> None:
-    triangle = input('Is your triangle equilateral or isosceles or different-sided?(e/i/d): ')
-    if(triangle.lower() == 'e'):
+    """
+        Computes and prints perimeter of any triangle with provided side lengths.
+    """
+    triangle_type = input('Is your triangle equilateral or isosceles or different-sided?(e/i/d): ')
+    if(triangle_type.lower() == 'e'):
         sd_len = int(input('Type side length of your triangle: '))
         tri_peri = sd_len * 3
         print('Perimeter of your triangle', rnd_eq_syn(), tri_peri)
-    elif(triangle.lower() == 'i'):
+    elif(triangle_type.lower() == 'i'):
         tri_leg = int(input('Type legs length in your triangle: '))
         tri_base = int(input('Type base length in your triangle: '))
         tri_peri = tri_leg * 2 + tri_base
         print('Perimeter of your triangle', rnd_eq_syn(), tri_peri)
-    elif(triangle.lower() == 'd'):
+    elif(triangle_type.lower() == 'd'):
         tri_sides = (
             int(input('Type first side length in your triangle: ')),
             int(input('Type second side length in your triangle: ')),
@@ -193,16 +243,19 @@ def tria_peri() -> None:
         tri_peri = sum(tri_sides)
         print('Perimeter of your triangle', rnd_eq_syn(), tri_peri)
     else:
-        print(f'Provided letter \'{triangle}\' doesn\'t match any of the proper letters.')
+        print(f'Provided letter \'{triangle_type}\' doesn\'t match any of the proper letters.')
 
 def rho_area() -> None:
+    """
+        Computes and prints area of rhombus using diagonals or side length provided by user.
+    """
     diag_or_side = input('Formula with diagonals or with a side?(d/s)')
     if(diag_or_side.lower() == 'd'):
         rho_diags = (
             int(input('Type first diagonal of your rhombus: ')),
             int(input('Type second diagonal of your rhombus: '))
         )  
-        rho_area = mult(rho_diags) / 2
+        rho_area = prod(rho_diags) / 2
         print('Area of your rhombus', rnd_eq_syn(), rho_area)
     elif(diag_or_side.lower() == 's'):
         sd_len = int(input('Type side length of your rhombus: '))
@@ -213,17 +266,26 @@ def rho_area() -> None:
         print(f'Provided letter "{diag_or_side}" doesn\'t match any of the proper letters.')
 
 def rho_peri() -> None:
+    """
+        Computes and prints perimeter of rhombus with provided side length.
+    """
     sd_len = int(input('Type side length of your rhombus: '))
     rho_peri = sd_len * 4
     print('Perimeter of your rhombus', rnd_eq_syn(), rho_peri)
 
 def par_area() -> None:
+    """
+        Computes and prints area of parallel with provided side length and height.
+    """
     sd_len = int(input('Type side length of your parallelogram: '))
     height = int(input('Type height of your parallelogram: '))
     par_area = sd_len * height
     print('Area of your parallelogram', rnd_eq_syn(), par_area)
 
 def par_peri() -> None:
+    """
+        Computes and prints perimeter of parallel with provided side lengths.
+    """
     sides = (
         int(input('Type first side length of your parallelogram: ')),
         int(input('Type second side length of your parallelogram: '))
@@ -232,6 +294,9 @@ def par_peri() -> None:
     print('Perimeter of your parallelogram', rnd_eq_syn(), par_peri)
 
 def trap_area() -> None:
+    """
+        Computes and prints area of trapeze with provided bases and height.
+    """
     bases = (
         int(input('Type first base length of your trapeze: ')),
         int(input('Type second base length of your trapeze: '))
@@ -240,6 +305,9 @@ def trap_area() -> None:
     trap_area = sum(bases) * height / 2
 
 def trap_peri() -> None:
+    """
+        Computes and prints perimeter of any trapeze using provided side lengths.
+    """
     is_isosceles = input('Is your trapeze isosceles or not? (y/n): ')
     if(is_isosceles.lower() == 'y'):
         base_lengths = (
@@ -263,79 +331,117 @@ def trap_peri() -> None:
     print('Perimeter of your trapeze', rnd_eq_syn(), trap_peri)
 
 def circ_area() -> None:
+    """
+        Computes and prints area of circle with provided radius.
+    """
     radius = int(input('Type radius of your circle (half of a diameter): '))
     circ_area = pi * radius**2
     print(f'Area of your circle {rnd_eq_syn()} {radius**2}π ({circ_area})')
 
 def circ_peri() -> None:
+    """
+        Computes and prints perimeter of circle with provided radius.
+    """
     radius = int(input('Type radius of your circle (half of a diameter): '))
     circ_peri = 2 * pi * radius
     print(f'Perimeter of your circle {rnd_eq_syn()} {radius * 2}π ({circ_peri})')
 
 def cube_area() -> None:
+    """
+        Computes and prints area of cube with provided edge length.
+    """
     edge_length = int(input('Type edge length of your cube: '))
     cube_area = edge_length**2 * 6
     print('Area of your cube', rnd_eq_syn(), cube_area)
 
 def cube_vol() -> None:
+    """
+        Computes and prints volume of cube with provided edge length.
+    """
     edge_length = int(input('Type edge length of your cube: '))
     cube_vol = edge_length**3
     print('Volume of your cube', rnd_eq_syn(), cube_vol)
 
 def cubo_area() -> None:
+    """
+        Computes and prints area of cuboid with provided edge lengths.
+    """
     edge_lengths = (
         int(input('Type first edge length of your cube: ')),
         int(input('Type second edge length of your cube: ')),
         int(input('Type third edge length of your cube: '))
     )
-    # Try to simplify this
-    cuboid_area = (edge_lengths(0) * edge_lengths(1) + edge_lengths(0) * edge_lengths(2) + edge_lengths(1) * edge_lengths(2)) * 2
+    cuboid_area = (edge_lengths[0] * edge_lengths[1] + edge_lengths[0] * edge_lengths[2] + edge_lengths[1] * edge_lengths[2]) * 2
     print('Area of your cuboid', rnd_eq_syn(), cuboid_area)
 
 def cubo_vol() -> None:
+    """
+        Computes and prints volume of cuboid with provided edge lengths.
+    """
     edge_lengths = (
         int(input('Type first edge length of your cube: ')),
         int(input('Type second edge length of your cube: ')),
         int(input('Type third edge length of your cube: '))
     )
-    cuboid_vol = mult(edge_lengths)
+    cuboid_vol = prod(edge_lengths)
     print('Volume of your cuboid', rnd_eq_syn(), cuboid_vol)
 
 def cyl_area() -> None:
+    """
+        Computes and prints area of cylinder with provided radius and height.
+    """
     radius = int(input('Type radius of your cylinder (half of a diameter): '))
     height = int(input('Type height of your cylinder: '))
     cyl_area = pi * radius * (radius + height) * 2
     print(f'Area of your cylinder {rnd_eq_syn()} {radius * (radius + height) * 2}π ({cyl_area})')
 
 def cyl_vol() -> None:
+    """
+        Computes and prints volume of cylinder with provided radius and height.
+    """
     radius = int(input('Type radius of your cylinder (half of a diameter): '))
     height = int(input('Type height of your cylinder: '))
     cyl_vol = pi * radius**2 * height
     print(f'Volume of your cylinder {rnd_eq_syn()} {radius**2 * height}π ({cyl_vol})')
 
 def sph_area() -> None:
+    """
+        Computes and prints area of sphere with provided radius.
+    """
     radius = int(input('Type radius of your sphere (half of a diameter): '))
     sph_area = pi * radius**2 * 4
     print(f'Area of your sphere {rnd_eq_syn()} {radius**2 * 4}π ({sph_area})')
 
 def sph_vol() -> None:
+    """
+        Computes and prints volume of sphere with provided radius.
+    """
     radius = int(input('Type radius of your sphere (half of a diameter): '))
     sph_vol = pi * radius**3 * 4 / 3
     print(f'Volume of your sphere {rnd_eq_syn()} {radius**3 * 4 / 3}π ({sph_vol})')
 
 def dens() -> None:
+    """
+        Computes and prints density of an object with provided volume and mass.
+    """
     vol = int(input('Type volume: '))
     mass = int(input('Type mass: '))
     dens = mass / vol
-    print('Density is:',dens)
+    print('Density', rnd_eq_syn(), dens)
 
 def vol() -> None:
+    """
+        Computes and prints volume of an object with provided mass and density.
+    """
     mass = int(input('Type mass: '))
     dens = int(input('Type density'))
     vol = mass / dens
     print('Volume', rnd_eq_syn(), vol)
 
 def mass() -> None:
+    """
+        Computes and prints mass of an object with provided volume and density.
+    """
     vol = int(input('Type volume'))
     dens = int(input('Type density'))
     mass = vol * dens
