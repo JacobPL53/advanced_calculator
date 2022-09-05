@@ -1,6 +1,8 @@
 from math import sqrt, pi, prod
 from random import choice
 
+# TEST TEST TEST TEST
+
 POSSIBS = (  
     'equals',
     'is',
@@ -12,9 +14,15 @@ POSSIBS = (
     'consists of',
     'fits'
 )
+BRANCH_OF_SCIENCE = (
+    "Maths",
+    "Chemistry",
+    "Informatics"
+)
 
 PATTS = (
-    (   'Addition',
+    (   
+        'Addition',
         'Subtraction',
         'Multiplication',
         'Division',
@@ -48,14 +56,26 @@ PATTS = (
         'Sphere Area',
         'Sphere Volume'
     ),
-    (   'Mass',
+    (   
+        'Mass',
         'Density',
         'Volume'
     ),
-    (   'Byte Calculator',
+    (   
+        'Byte Calculator',
         'Converting numbers to other number system'
     )
 )
+
+def select(iterable) -> None:
+    """
+        Prints all items from iterable as options to select
+        @param: iterable containing the elements
+    """
+    x=''
+    for i in range(0, len(iterable)):
+        x += f'\n{i+1} - {iterable[i]}'
+    print(x)
 
 def unavai() -> None:
     """
@@ -208,7 +228,7 @@ def rect_peri() -> None:
     """
     rect_width = int(input('Type width of your rectangle: '))
     rect_height = int(input('Type height of your rectangle: '))
-    rect_peri = 2 * rect_width + 2 * rect_height
+    rect_peri = 2 * (rect_width + rect_height)
     print('Perimeter of your rectangle', (rnd_eq_syn(), rect_peri))
 
 def tria_area() -> None:
@@ -316,6 +336,7 @@ def trap_peri() -> None:
         )
         trap_leg = int(input('Type legs length in your trapeze: '))
         trap_peri = sum(base_lengths) + trap_leg * 2
+        print('Perimeter of your trapeze', rnd_eq_syn(), trap_peri)
     elif(is_isosceles.lower() == 'n'):
         base_lengths = (
             int(input('Type first base length of your trapeze: ')),
@@ -326,25 +347,27 @@ def trap_peri() -> None:
             int(input('Type second leg length in your trapeze: '))
         )
         trap_peri = sum(sum(base_lengths),(trap_legs))
+        print('Perimeter of your trapeze', rnd_eq_syn(), trap_peri)
     else:
         print(f'Provided letter "{is_isosceles}" doesn\'t match any of the proper letters.')
-    print('Perimeter of your trapeze', rnd_eq_syn(), trap_peri)
 
 def circ_area() -> None:
     """
         Computes and prints area of circle with provided radius.
     """
     radius = int(input('Type radius of your circle (half of a diameter): '))
-    circ_area = pi * radius**2
-    print(f'Area of your circle {rnd_eq_syn()} {radius**2}π ({circ_area})')
+    without_pi = radius**2
+    circ_area = pi * without_pi
+    print(f'Area of your circle {rnd_eq_syn()} {without_pi}π ({circ_area})')
 
 def circ_peri() -> None:
     """
         Computes and prints perimeter of circle with provided radius.
     """
     radius = int(input('Type radius of your circle (half of a diameter): '))
-    circ_peri = 2 * pi * radius
-    print(f'Perimeter of your circle {rnd_eq_syn()} {radius * 2}π ({circ_peri})')
+    without_pi = radius * 2
+    circ_peri = pi * without_pi
+    print(f'Perimeter of your circle {rnd_eq_syn()} {without_pi}π ({circ_peri})')
 
 def cube_area() -> None:
     """
@@ -392,8 +415,9 @@ def cyl_area() -> None:
     """
     radius = int(input('Type radius of your cylinder (half of a diameter): '))
     height = int(input('Type height of your cylinder: '))
-    cyl_area = pi * radius * (radius + height) * 2
-    print(f'Area of your cylinder {rnd_eq_syn()} {radius * (radius + height) * 2}π ({cyl_area})')
+    without_pi = radius * (radius + height) * 2
+    cyl_area = pi * without_pi
+    print(f'Area of your cylinder {rnd_eq_syn()} {without_pi}π ({cyl_area})')
 
 def cyl_vol() -> None:
     """
@@ -401,24 +425,27 @@ def cyl_vol() -> None:
     """
     radius = int(input('Type radius of your cylinder (half of a diameter): '))
     height = int(input('Type height of your cylinder: '))
-    cyl_vol = pi * radius**2 * height
-    print(f'Volume of your cylinder {rnd_eq_syn()} {radius**2 * height}π ({cyl_vol})')
+    without_pi = radius**2 * height
+    cyl_vol = pi * without_pi
+    print(f'Volume of your cylinder {rnd_eq_syn()} {without_pi}π ({cyl_vol})')
 
 def sph_area() -> None:
     """
         Computes and prints area of sphere with provided radius.
     """
     radius = int(input('Type radius of your sphere (half of a diameter): '))
-    sph_area = pi * radius**2 * 4
-    print(f'Area of your sphere {rnd_eq_syn()} {radius**2 * 4}π ({sph_area})')
+    without_pi = radius**2 * 4
+    sph_area = pi * without_pi
+    print(f'Area of your sphere {rnd_eq_syn()} {without_pi}π ({sph_area})')
 
 def sph_vol() -> None:
     """
         Computes and prints volume of sphere with provided radius.
     """
     radius = int(input('Type radius of your sphere (half of a diameter): '))
-    sph_vol = pi * radius**3 * 4 / 3
-    print(f'Volume of your sphere {rnd_eq_syn()} {radius**3 * 4 / 3}π ({sph_vol})')
+    without_pi = radius**3 * 4 / 3
+    sph_vol = pi * without_pi
+    print(f'Volume of your sphere {rnd_eq_syn()} {without_pi}π ({sph_vol})')
 
 def dens() -> None:
     """

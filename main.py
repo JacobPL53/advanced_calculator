@@ -1,17 +1,20 @@
 from patterns import *
 
+# TEST TEST TEST TEST
+
 CATEGORIES = (
     'Basic Calculator',
     'Geometry'
 )
 
 # Ask for question branch
-print('Type 1 for Maths\nType 2 for Chemistry\nType 3 for Informatics')
+select(BRANCH_OF_SCIENCE)
 branch_of_science = int(input('Select one of above: '))
 if(branch_of_science == 1):
-    category = int(input('1 - {}\n2 - {}\nSelect one of those: '.format(*CATEGORIES)))
+    select(CATEGORIES)
+    category = int(input('Select one of above: '))
     if(category == 1):
-        print('\n1 - {}\n2 - {}\n3 - {}\n4 - {}\n5 - {}\n6 - {}\n7 - {}\n8 - {}'.format(*PATTS[0]))
+        select(PATTS[0])
         direct_pattern = int(input('Select one of above: '))
         if(direct_pattern == 1):
             add()
@@ -32,8 +35,7 @@ if(branch_of_science == 1):
         else:
             num_not_found(direct_pattern)
     elif(category == 2):
-        # print(f'\n{n} - '.join(list(map(lambda n: patts[1][n],list([i for i in range(0, len(patts[1]))])))))
-        print('\n1 - {}\n2 - {}\n 3 - {}\n4 - {}\n5 - {}\n6 - {}\n7 - {}\n8 - {}\n9 - {}\n10 - {}\n11 - {}\n12 - {}\n13 - {}\n14 - {}\n15 - {}\n16 - {}\n17 - {}\n18 - {}\n19 - {}\n20 - {}\n21 - {}\n22 - {}\n23 - {}'.format(*PATTS[1]))
+        select(PATTS[1])
         direct_pattern = int(input('Select one of above: '))
         if(direct_pattern == 1):
             sqre_diag()
@@ -86,7 +88,8 @@ if(branch_of_science == 1):
     else:
         num_not_found(category)
 elif(branch_of_science == 2):
-    direct_pattern = int(input('Select one of those: \n1 - {}\n2 - {}\n3 - {}\n'.format(*PATTS[2])))
+    select(PATTS[2])
+    direct_pattern = int(input('Select one of above: '))
     if(direct_pattern == 1):
         dens()
     elif(direct_pattern == 2):
@@ -96,7 +99,8 @@ elif(branch_of_science == 2):
     else:
         num_not_found(direct_pattern)
 elif(branch_of_science == 3):
-    direct_pattern = int(input('Select one of those: \n1 - {}\n2 - {}\n'.format(*PATTS[3])))
+    select(PATTS[3])
+    direct_pattern = int(input('Select one of above: '))
     if(direct_pattern == 1):
         unavai()
     elif(direct_pattern == 2):
