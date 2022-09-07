@@ -1,7 +1,5 @@
 from patterns import *
 
-# TEST TEST TEST TEST
-
 CATEGORIES = (
     'Basic Calculator',
     'Geometry'
