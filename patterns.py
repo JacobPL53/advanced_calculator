@@ -1,8 +1,6 @@
 from math import sqrt, pi, prod
 from random import choice
 
-# TEST TEST TEST TEST
-
 POSSIBS = (  
     'equals',
     'is',
