@@ -5,7 +5,6 @@ CATEGORIES = (
     'Geometry'
 )
 
-# Ask for question branch
 select(BRANCH_OF_SCIENCE)
 branch_of_science = int(input('Select one of above: '))
 if(branch_of_science == 1):
@@ -100,7 +99,14 @@ elif(branch_of_science == 3):
     select(PATTS[3])
     direct_pattern = int(input('Select one of above: '))
     if(direct_pattern == 1):
-        unavai()
+        sys1 = input('In which system your number is? (b/o/d/h): ')
+        if sys1 != 'b' and sys1 != 'o' and sys1 != 'd' and sys1 != 'h':
+            num_not_found(sys1)
+        sys2 = input('To which system do you want to convert? (b/o/d/h): ')
+        if sys2 != 'b' and sys2 != 'o' and sys2 != 'd' and sys2 != 'h':
+            num_not_found(sys2)
+        num = input('Enter your number: ')
+        print(convert(sys1, sys2, num))
     elif(direct_pattern == 2):
         unavai()
     else:
